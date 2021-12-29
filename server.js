@@ -6,10 +6,8 @@ const nodemailer = require('nodemailer');
 
 require('dotenv').config(); // безопасность
 
-
 const app = express();
 const PORT = 8080;
-
 
 // __________
 
