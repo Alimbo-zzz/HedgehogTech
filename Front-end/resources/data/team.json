@@ -1,0 +1,104 @@
+{
+  "team":[
+    {
+      "name":"Иван Кабанов",
+      "post":"CEO",
+      "img":"Ivan"
+    },
+    {
+      "name":"Олег Сердюк",
+      "post":"CTO",
+      "img":"Oleg"
+    },
+    {
+      "name":"Денис Горбатовский",
+      "post":"Game Designer",
+      "img":"Denis_1"
+    },
+    {
+      "name":"Рамиль Зинатуллин",
+      "post":"Head of UA",
+      "img":"Ramil"
+    },
+    {
+      "name":"Оксана Бахина",
+      "post":"Project Manager, HR",
+      "img":"Oksana"
+    },
+    {
+      "name":"Денис Пименов",
+      "post":"Android Developer",
+      "img":"Denis_2"
+    },
+    {
+      "name":"Елена Сметанина",
+      "post":"Junior Project Manager",
+      "img":"Helena"
+    },
+    {
+      "name":"Данил Бродин",
+      "post":"Unity Developer",
+      "img":"Danil"
+    },
+    {
+      "name":"Наталья Посох",
+      "post":"Product Manager",
+      "img":"Natalya"
+    },
+    {
+      "name":"Алим Мамбетов",
+      "post":"Front-End Developer",
+      "img":"Alim"
+    },
+    {
+      "name":"Владислав Самоваров",
+      "post":"UX/UI Designer",
+      "img":"Vlad"
+    },
+    {
+      "name":"Ксения Гарбузова",
+      "post":"QA Tester",
+      "img":"Ksenia"
+    },
+    {
+      "name":"Вячеслав Морозов",
+      "post":"Android Developer",
+      "img":"Vyacheslav"
+    },
+    {
+      "name":"Анна Прус",
+      "post":"Account Manager",
+      "img":"Anna"
+    },
+    {
+      "name":"Римма Шигапова",
+      "post":"Artist",
+      "img":"Rimma"
+    },
+    {
+      "name":"Арина Блинова",
+      "post":"Copywriter",
+      "img":"Arina"
+    },
+    {
+      "name":"Ринат Усманов",
+      "post":"Head of ASO",
+      "img":"Rinat"
+    },
+    {
+      "name":"Полина Вирки",
+      "post":"UX/UI Designer",
+      "img":"Pauline"
+    },
+    {
+      "name":"Анастасия Жулева",
+      "post":"UX/UI Designer",
+      "img":"Anastasia"
+    },
+    {
+      "name":"Дмитрий Макаров",
+      "post":"Android Developer",
+      "img":"Dmitry"
+    }
+  ]
+}
