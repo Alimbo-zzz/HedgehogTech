@@ -1,335 +1,8 @@
 "use strict";
 
-var src = './'; // const src = 'static/web/';;"use strict";
+var src = './'; // const src = 'static/web/';
 
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function anchors() {
-  var anchors = document.querySelectorAll("a[href*='#']");
-
-  var _iterator = _createForOfIteratorHelper(anchors),
-      _step;
-
-  try {
-    var _loop = function _loop() {
-      var anchor = _step.value;
-      anchor.addEventListener('click', function (event) {
-        event.preventDefault();
-        var blockID = anchor.getAttribute('href');
-        document.querySelector('' + blockID).scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      });
-    };
-
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      _loop();
-    }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
-}
-
-anchors();;"use strict";
-
-AOS.init({
-  // Global settings:
-  disable: false,
-  // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
-  startEvent: 'DOMContentLoaded',
-  // name of the event dispatched on the document, that AOS should initialize on
-  initClassName: 'aos-init',
-  // class applied after initialization
-  animatedClassName: 'aos-animate',
-  // class applied on animation
-  useClassNames: false,
-  // if true, will add content of `data-aos` as classes on scroll
-  disableMutationObserver: false,
-  // disables automatic mutations' detections (advanced)
-  debounceDelay: 50,
-  // the delay on debounce used while resizing window (advanced)
-  throttleDelay: 99,
-  // the delay on throttle used while scrolling the page (advanced)
-  // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
-  offset: 120,
-  // offset (in px) from the original trigger point
-  delay: 0,
-  // values from 0 to 3000, with step 50ms
-  duration: 400,
-  // values from 0 to 3000, with step 50ms
-  easing: 'ease',
-  // default easing for AOS animations
-  once: false,
-  // whether animation should happen only once - while scrolling down
-  mirror: false,
-  // whether elements should animate out while scrolling past them
-  anchorPlacement: 'top-bottom' // defines which position of the element regarding to window should trigger the animation
-
-});
-window.addEventListener('load', AOS.refresh);;"use strict";
-
-function form_focus() {
-  var elems = document.querySelectorAll('input[type="text"], textarea');
-  elems.forEach(function (el, i) {
-    var focus_el = document.createElement('div');
-    focus_el.classList.add('focus');
-    el.parentNode.append(focus_el);
-
-    el.onfocus = function () {
-      el.parentNode.classList.add('_focus', '_active');
-      el.parentNode.classList.remove('_err');
-      document.querySelector('.connection').classList.remove('_active');
-    };
-
-    el.onblur = function () {
-      if (el.value == "" || el.value == " ") {
-        el.parentNode.classList.remove('_active');
-      }
-
-      el.parentNode.classList.remove('_focus');
-    };
-  });
-}
-
-form_focus();;"use strict";
-
-var getCoords = function getCoords(element, position) {
-  var _element$getBoundingC = element.getBoundingClientRect(),
-      top = _element$getBoundingC.top,
-      left = _element$getBoundingC.left,
-      width = _element$getBoundingC.width,
-      height = _element$getBoundingC.height;
-
-  var point;
-
-  switch (position) {
-    case "top left":
-      point = {
-        x: left + window.pageXOffset,
-        y: top + window.pageYOffset
-      };
-      break;
-
-    case "top center":
-      point = {
-        x: left + width / 2 + window.pageXOffset,
-        y: top + window.pageYOffset
-      };
-      break;
-
-    case "top right":
-      point = {
-        x: left + width + window.pageXOffset,
-        y: top + window.pageYOffset
-      };
-      break;
-
-    case "center left":
-      point = {
-        x: left + window.pageXOffset,
-        y: top + height / 2 + window.pageYOffset
-      };
-      break;
-
-    case "center":
-      point = {
-        x: left + width / 2 + window.pageXOffset,
-        y: top + height / 2 + window.pageYOffset
-      };
-      break;
-
-    case "center right":
-      point = {
-        x: left + width + window.pageXOffset,
-        y: top + height / 2 + window.pageYOffset
-      };
-      break;
-
-    case "bottom left":
-      point = {
-        x: left + window.pageXOffset,
-        y: top + height + window.pageYOffset
-      };
-      break;
-
-    case "bottom center":
-      point = {
-        x: left + width / 2 + window.pageXOffset,
-        y: top + height + window.pageYOffset
-      };
-      break;
-
-    case "bottom right":
-      point = {
-        x: left + width + window.pageXOffset,
-        y: top + height + window.pageYOffset
-      };
-      break;
-  }
-
-  return point; // вводишь нужную тебе позицию на елементе 
-  // getCoords(document.querySelector('selector'), 'center')
-  // getCoords(document.querySelector('selector'), 'bottom right') (нижний правый угол)
-  // getCoords(document.querySelector('selector'), 'top center') (верхний центральный)
-};;"use strict";
-
-function preloading() {
-  var preloader = document.querySelector('.loading');
-  preloader.classList.add('_active');
-  setTimeout(function () {
-    preloader.classList.remove('_active');
-  }, 3000);
-}
-
-preloading();;"use strict";
-
-function push_msg(text) {
-  var bg = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "#222";
-  var color = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '#fff';
-  var time = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0.8;
-  var delay = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0.4;
-  var stop = delay * 1000;
-  var base_style = "\n\t\tbackground:".concat(bg, ";\n\t\tcolor:").concat(color, ";\n\t\tposition: fixed;\n\t\tright: 0; top: 20%;\n\t\tpadding: 0.8em 2em;\n\t\tborder-top-left-radius: 1em;\n\t\tborder-bottom-left-radius: 1em;\n\t\tz-index: 1000;\n\t\ttransition: ").concat(time, "s;\n\t\ttransform: translateX(120%);\n\t");
-
-  if (!document.querySelector('#_push_message_')) {
-    var push_el = document.createElement('div');
-    push_el.id = '_push_message_';
-    push_el.textContent = text;
-    push_el.style.cssText = base_style;
-    document.body.append(push_el);
-    setTimeout(function () {
-      push_el.style.transform = 'translateX(0%)';
-      setTimeout(function () {
-        push_el.style.filter = 'brightness(1.8)';
-        setTimeout(function () {
-          push_el.style.filter = 'brightness(1)';
-        }, 200);
-      }, time * 1000);
-      setTimeout(function () {
-        push_el.style.transform = 'translateX(120%)';
-        setTimeout(function () {
-          push_el.remove();
-        }, time * 1000);
-      }, time * 1000 + stop);
-    }, 200);
-  }
-};"use strict";
-
-function sendRequest(method, url) {
-  var body = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-  return new Promise(function (resolve, reject) {
-    var xhr = new XMLHttpRequest();
-    xhr.open(method, url);
-    xhr.responseType = 'json';
-    xhr.setRequestHeader('Content-type', 'application/json');
-
-    xhr.onload = function () {
-      if (xhr.status >= 400) {
-        reject(xhr.response);
-      } else {
-        resolve(xhr.response);
-      }
-    };
-
-    xhr.onerror = function () {
-      reject(xhr.response);
-    };
-
-    xhr.send(JSON.stringify(body));
-  });
-};"use strict";
-
-function validation() {
-  var forms = document.querySelectorAll('form');
-  forms.forEach(function (form, i) {
-    var req_el = form.querySelectorAll('._req');
-    var number = form.querySelectorAll('._num');
-    req_el.forEach(function (req) {
-      return add_err_el(req);
-    });
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      formSend(form);
-    });
-    only_number(number);
-  });
-
-  function add_err_el(el) {
-    var err = document.createElement('div');
-    err.classList.add('err');
-    el.parentNode.append(err);
-  }
-
-  function formSend(form) {
-    var error = formValidate(form);
-    var req_el = form.querySelectorAll('._req');
-
-    if (error === 0) {
-      POST_forms(form.id);
-      reset(form);
-    } else {
-      console.log('err');
-    }
-  }
-
-  function formValidate(form) {
-    var error = 0;
-    var formReq = form.querySelectorAll('._req');
-    formReq.forEach(function (item, i) {
-      RemoveError(item);
-
-      if (item.value === '' || item.value === ' ') {
-        AddError(item);
-        error++;
-      }
-    });
-    return error;
-  }
-
-  function AddError(item) {
-    item.parentNode.classList.add('_err');
-  }
-
-  function RemoveError(item) {
-    item.parentNode.classList.remove('_err');
-  }
-
-  function reset(form) {
-    var elems = form.querySelectorAll('input[type="text"], textarea');
-    elems.forEach(function (el, i) {
-      el.parentNode.classList.remove('_err');
-      el.value = '';
-    });
-  }
-
-  function only_number(elms) {
-    elms.forEach(function (input) {
-      input.addEventListener('keydown', function (event) {
-        // Разрешаем: backspace, delete, tab и escape
-        if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || // Разрешаем: Ctrl+A
-        event.keyCode == 65 && event.ctrlKey === true || // Разрешаем: home, end, влево, вправо
-        event.keyCode >= 35 && event.keyCode <= 39) {
-          // Ничего не делаем
-          return;
-        } else {
-          // Запрещаем все, кроме цифр на основной клавиатуре, а так же Num-клавиатуре
-          if ((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
-            event.preventDefault();
-          }
-        }
-      });
-    });
-  }
-}
-
-validation();;"use strict";
+var BaseURL = '/';;"use strict";
 
 function accordeon_f(data) {
   var accordeon = document.querySelector('.accordeon');
@@ -740,6 +413,335 @@ function team_slider_btns(activeIndex, data) {
   }
 };"use strict";
 
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function anchors() {
+  var anchors = document.querySelectorAll("a[href*='#']");
+
+  var _iterator = _createForOfIteratorHelper(anchors),
+      _step;
+
+  try {
+    var _loop = function _loop() {
+      var anchor = _step.value;
+      anchor.addEventListener('click', function (event) {
+        event.preventDefault();
+        var blockID = anchor.getAttribute('href');
+        document.querySelector('' + blockID).scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      });
+    };
+
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      _loop();
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+}
+
+anchors();;"use strict";
+
+AOS.init({
+  // Global settings:
+  disable: false,
+  // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
+  startEvent: 'DOMContentLoaded',
+  // name of the event dispatched on the document, that AOS should initialize on
+  initClassName: 'aos-init',
+  // class applied after initialization
+  animatedClassName: 'aos-animate',
+  // class applied on animation
+  useClassNames: false,
+  // if true, will add content of `data-aos` as classes on scroll
+  disableMutationObserver: false,
+  // disables automatic mutations' detections (advanced)
+  debounceDelay: 50,
+  // the delay on debounce used while resizing window (advanced)
+  throttleDelay: 99,
+  // the delay on throttle used while scrolling the page (advanced)
+  // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+  offset: 120,
+  // offset (in px) from the original trigger point
+  delay: 0,
+  // values from 0 to 3000, with step 50ms
+  duration: 400,
+  // values from 0 to 3000, with step 50ms
+  easing: 'ease',
+  // default easing for AOS animations
+  once: false,
+  // whether animation should happen only once - while scrolling down
+  mirror: false,
+  // whether elements should animate out while scrolling past them
+  anchorPlacement: 'top-bottom' // defines which position of the element regarding to window should trigger the animation
+
+});
+window.addEventListener('load', AOS.refresh);;"use strict";
+
+function form_focus() {
+  var elems = document.querySelectorAll('input[type="text"], textarea');
+  elems.forEach(function (el, i) {
+    var focus_el = document.createElement('div');
+    focus_el.classList.add('focus');
+    el.parentNode.append(focus_el);
+
+    el.onfocus = function () {
+      el.parentNode.classList.add('_focus', '_active');
+      el.parentNode.classList.remove('_err');
+      document.querySelector('.connection').classList.remove('_active');
+    };
+
+    el.onblur = function () {
+      if (el.value == "" || el.value == " ") {
+        el.parentNode.classList.remove('_active');
+      }
+
+      el.parentNode.classList.remove('_focus');
+    };
+  });
+}
+
+form_focus();;"use strict";
+
+var getCoords = function getCoords(element, position) {
+  var _element$getBoundingC = element.getBoundingClientRect(),
+      top = _element$getBoundingC.top,
+      left = _element$getBoundingC.left,
+      width = _element$getBoundingC.width,
+      height = _element$getBoundingC.height;
+
+  var point;
+
+  switch (position) {
+    case "top left":
+      point = {
+        x: left + window.pageXOffset,
+        y: top + window.pageYOffset
+      };
+      break;
+
+    case "top center":
+      point = {
+        x: left + width / 2 + window.pageXOffset,
+        y: top + window.pageYOffset
+      };
+      break;
+
+    case "top right":
+      point = {
+        x: left + width + window.pageXOffset,
+        y: top + window.pageYOffset
+      };
+      break;
+
+    case "center left":
+      point = {
+        x: left + window.pageXOffset,
+        y: top + height / 2 + window.pageYOffset
+      };
+      break;
+
+    case "center":
+      point = {
+        x: left + width / 2 + window.pageXOffset,
+        y: top + height / 2 + window.pageYOffset
+      };
+      break;
+
+    case "center right":
+      point = {
+        x: left + width + window.pageXOffset,
+        y: top + height / 2 + window.pageYOffset
+      };
+      break;
+
+    case "bottom left":
+      point = {
+        x: left + window.pageXOffset,
+        y: top + height + window.pageYOffset
+      };
+      break;
+
+    case "bottom center":
+      point = {
+        x: left + width / 2 + window.pageXOffset,
+        y: top + height + window.pageYOffset
+      };
+      break;
+
+    case "bottom right":
+      point = {
+        x: left + width + window.pageXOffset,
+        y: top + height + window.pageYOffset
+      };
+      break;
+  }
+
+  return point; // вводишь нужную тебе позицию на елементе 
+  // getCoords(document.querySelector('selector'), 'center')
+  // getCoords(document.querySelector('selector'), 'bottom right') (нижний правый угол)
+  // getCoords(document.querySelector('selector'), 'top center') (верхний центральный)
+};;"use strict";
+
+function preloading() {
+  var preloader = document.querySelector('.loading');
+  preloader.classList.add('_active');
+  setTimeout(function () {
+    preloader.classList.remove('_active');
+  }, 3000);
+}
+
+preloading();;"use strict";
+
+function push_msg(text) {
+  var bg = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "#222";
+  var color = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '#fff';
+  var time = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0.8;
+  var delay = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0.4;
+  var stop = delay * 1000;
+  var base_style = "\n\t\tbackground:".concat(bg, ";\n\t\tcolor:").concat(color, ";\n\t\tposition: fixed;\n\t\tright: 0; top: 20%;\n\t\tpadding: 0.8em 2em;\n\t\tborder-top-left-radius: 1em;\n\t\tborder-bottom-left-radius: 1em;\n\t\tz-index: 1000;\n\t\ttransition: ").concat(time, "s;\n\t\ttransform: translateX(120%);\n\t");
+
+  if (!document.querySelector('#_push_message_')) {
+    var push_el = document.createElement('div');
+    push_el.id = '_push_message_';
+    push_el.textContent = text;
+    push_el.style.cssText = base_style;
+    document.body.append(push_el);
+    setTimeout(function () {
+      push_el.style.transform = 'translateX(0%)';
+      setTimeout(function () {
+        push_el.style.filter = 'brightness(1.8)';
+        setTimeout(function () {
+          push_el.style.filter = 'brightness(1)';
+        }, 200);
+      }, time * 1000);
+      setTimeout(function () {
+        push_el.style.transform = 'translateX(120%)';
+        setTimeout(function () {
+          push_el.remove();
+        }, time * 1000);
+      }, time * 1000 + stop);
+    }, 200);
+  }
+};"use strict";
+
+function sendRequest(method, url) {
+  var body = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  return new Promise(function (resolve, reject) {
+    var xhr = new XMLHttpRequest();
+    xhr.open(method, url);
+    xhr.responseType = 'json';
+    xhr.setRequestHeader('Content-type', 'application/json');
+
+    xhr.onload = function () {
+      if (xhr.status >= 400) {
+        reject(xhr.response);
+      } else {
+        resolve(xhr.response);
+      }
+    };
+
+    xhr.onerror = function () {
+      reject(xhr.response);
+    };
+
+    xhr.send(JSON.stringify(body));
+  });
+};"use strict";
+
+function validation() {
+  var forms = document.querySelectorAll('form');
+  forms.forEach(function (form, i) {
+    var req_el = form.querySelectorAll('._req');
+    var number = form.querySelectorAll('._num');
+    req_el.forEach(function (req) {
+      return add_err_el(req);
+    });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      formSend(form);
+    });
+    only_number(number);
+  });
+
+  function add_err_el(el) {
+    var err = document.createElement('div');
+    err.classList.add('err');
+    el.parentNode.append(err);
+  }
+
+  function formSend(form) {
+    var error = formValidate(form);
+    var req_el = form.querySelectorAll('._req');
+
+    if (error === 0) {
+      POST_forms(form.id);
+      reset(form);
+    } else {
+      console.log('err');
+    }
+  }
+
+  function formValidate(form) {
+    var error = 0;
+    var formReq = form.querySelectorAll('._req');
+    formReq.forEach(function (item, i) {
+      RemoveError(item);
+
+      if (item.value === '' || item.value === ' ') {
+        AddError(item);
+        error++;
+      }
+    });
+    return error;
+  }
+
+  function AddError(item) {
+    item.parentNode.classList.add('_err');
+  }
+
+  function RemoveError(item) {
+    item.parentNode.classList.remove('_err');
+  }
+
+  function reset(form) {
+    var elems = form.querySelectorAll('input[type="text"], textarea');
+    elems.forEach(function (el, i) {
+      el.parentNode.classList.remove('_err');
+      el.value = '';
+    });
+  }
+
+  function only_number(elms) {
+    elms.forEach(function (input) {
+      input.addEventListener('keydown', function (event) {
+        // Разрешаем: backspace, delete, tab и escape
+        if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || // Разрешаем: Ctrl+A
+        event.keyCode == 65 && event.ctrlKey === true || // Разрешаем: home, end, влево, вправо
+        event.keyCode >= 35 && event.keyCode <= 39) {
+          // Ничего не делаем
+          return;
+        } else {
+          // Запрещаем все, кроме цифр на основной клавиатуре, а так же Num-клавиатуре
+          if ((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+            event.preventDefault();
+          }
+        }
+      });
+    });
+  }
+}
+
+validation();;"use strict";
+
 /*_______src________req*/
 var url_team = "".concat(src, "resources/data/team.json");
 var url_portfolio = "".concat(src, "resources/data/portfolio.json");
@@ -758,6 +760,7 @@ var dom_portfolio = undefined;
 var dom_accordeon = undefined;
 var dom_services = undefined;
 /*req________________*/
+// GET REQ TODO
 
 /*team*/
 
@@ -809,20 +812,12 @@ function POST_bid(id) {
       platform = item;
     }
   });
-  var html = '';
+  var html = "<!DOCTYPE html>\n\t<html lang=\"en\">\n\t<head>\n\t\t<meta charset=\"UTF-8\">\n\t\t<title>3D card</title>\n\t\t<style media=\"screen\">\n\t\t\t.wrap{\n\t\t\t\twidth:100%;\n\t\t\t\tbackground-color: #222;\n\t\t\t\tcolor: #fff;\n\t\t\t\tpadding: 50px 0;\n\t\t\t\tmargin: 0 auto;\n\t\t\t}\n\n\t\t\t.block{\n\t\t\t\twidth:500px;\n\t\t\t\tpadding:30px;\n\t\t\t\tmargin: 0 auto;\n\t\t\t\tborder:1px solid #fff;\n\t\t\t}\n\t\t\th1{text-align:center; margin-bottom: 10px;}\n\t\t\tli{}\n\t\t\tspan{color:orange;}\n\t\t\t._orange{color:orange; text-align:center; margin-bottom: 10px;}\n\t\t</style>\n\n\t</head>\n\t<body>\n\n\t\t<div class=\"wrap\">\n\t\t\t<div class=\"block\">\n\t\t\t\t<h1>Hedgehog</h1>\n\t\t\t\t<ul>\n\t\t\t\t\t<li>Name: <span>".concat(name.value, "</span></li>\n\t\t\t\t\t<li>Type: <span>").concat(type.value, "</span></li>\n\t\t\t\t\t<li>Telegram: <span>").concat(connection.value, "</span></li>\n\t\t\t\t\t<li>Cash: <span>").concat(cash.value, "</span></li>\n\t\t\t\t\t<li>Platform: <span>").concat(platform.value, "</span></li>\n\t\t\t\t\t<li><div class=\"_orange\">Description</div><p>").concat(description.value, "</p></li>\n\t\t\t\t</ul>\n\t\t\t</div>\n\t\t</div>\n\n\t</body>\n\t</html>");
   var body = {
-    data: {
-      name: name.value,
-      type: type.value,
-      connection: connection.value,
-      cash: cash.value,
-      platform: platform.value,
-      description: description.value
-    },
-    form: html
+    html: html,
+    type: 'bid'
   };
-  console.log(body);
-  sendRequest('POST', '/project/', body).then(function (res) {
+  sendRequest('POST', "".concat(BaseURL, "mailer/"), body).then(function (res) {
     if (res.status == "success") {
       push_msg('Успешно', '#1EB039');
     }
@@ -838,18 +833,12 @@ function POST_contact(id) {
   var mail = form.querySelector('input[name="mail"]');
   var telegram = form.querySelector('input[name="telegram"]');
   var description = form.querySelector('textarea[name="description"]');
-  var html = '<h1>hello Den!</h1>';
+  var html = "<!DOCTYPE html>\n\t<html lang=\"en\">\n\t<head>\n\t\t<meta charset=\"UTF-8\">\n\t\t<title>3D card</title>\n\t\t<style media=\"screen\">\n\t\t\t.wrap{\n\t\t\t\twidth:100%;\n\t\t\t\tbackground-color: #222;\n\t\t\t\tcolor: #fff;\n\t\t\t\tpadding: 50px 0;\n\t\t\t\tmargin: 0 auto;\n\t\t\t}\n\n\t\t\t.block{\n\t\t\t\twidth:500px;\n\t\t\t\tpadding:30px;\n\t\t\t\tmargin: 0 auto;\n\t\t\t\tborder:1px solid #fff;\n\t\t\t}\n\t\t\th1{text-align:center; margin-bottom: 10px;}\n\t\t\tli{}\n\t\t\tspan{color:orange;}\n\t\t\t._orange{color:orange; text-align:center; margin-bottom: 10px;}\n\t\t</style>\n\n\t</head>\n\t<body>\n\n\t\t<div class=\"wrap\">\n\t\t\t<div class=\"block\">\n\t\t\t\t<h1>Hedgehog</h1>\n\t\t\t\t<ul>\n\t\t\t\t\t<li>Name: <span>".concat(name.value, "</span></li>\n\t\t\t\t\t<li>Number: <span>").concat(number.value, "</span></li>\n\t\t\t\t\t<li>Telegram: <span>").concat(telegram.value, "</span></li>\n\t\t\t\t\t<li>Mail: <span>").concat(mail.value, "</span></li>\n\t\t\t\t\t<li><div class=\"_orange\">Description</div><p>").concat(description.value, "</p></li>\n\t\t\t\t</ul>\n\t\t\t</div>\n\t\t</div>\n\n\t</body>\n\t</html>");
   var body = {
-    data: {
-      name: name.value,
-      number: number.value,
-      mail: mail.value,
-      telegram: telegram.value,
-      description: description.value
-    },
-    form: html
+    html: html,
+    type: 'contact'
   };
-  sendRequest('POST', '/contact/', body).then(function (res) {
+  sendRequest('POST', "".concat(BaseURL, "mailer/"), body).then(function (res) {
     if (res.status == "success") {
       push_msg('Успешно', '#1EB039');
     }
@@ -857,6 +846,14 @@ function POST_contact(id) {
     return console.log(err);
   });
 };"use strict";
+
+var data = {
+  name: 'alimbo',
+  description: 'deskr',
+  number: '8999491096',
+  telegram: 'telassds',
+  mail: 'alimbo@gmail.com'
+};
 
 function POST_forms(id) {
   if (id == 'form-bid') {

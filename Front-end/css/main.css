@@ -939,6 +939,7 @@ input[type=radio]:checked + .radio-btn__style::before {
   -o-transition: 0.3s;
   transition: 0.3s;
   color: inherit;
+  font-size: 0.8em;
   white-space: nowrap;
   -webkit-user-select: auto;
      -moz-user-select: auto;
